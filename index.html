@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Порядок</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,500;7..72,600&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="atmosphere" aria-hidden="true"></div>
+
+  <main class="app">
+    <header class="top">
+      <div class="brand">
+        <p class="brand-mark">Порядок</p>
+        <p class="brand-sub" id="sceneLabel">наведи тишину</p>
+      </div>
+      <div class="progress" aria-live="polite">
+        <span id="progressText">0 / 0</span>
+        <div class="bar"><i id="progressBar"></i></div>
+      </div>
+    </header>
+
+    <section class="stage" aria-label="Игровое поле">
+      <div class="surface" id="surface"></div>
+    </section>
+
+    <footer class="hint" id="hint">Перетащи вещи на пунктир. Без спешки.</footer>
+  </main>
+
+  <div class="overlay" id="overlay" hidden>
+    <div class="card">
+      <p class="card-kicker" id="overlayKicker">сцена</p>
+      <h2 id="overlayTitle">Тишина</h2>
+      <p class="card-text" id="overlayText">Всё на своих местах.</p>
+      <button type="button" class="btn" id="nextBtn">Дальше</button>
+    </div>
+  </div>
+
+  <div class="start" id="start">
+    <div class="start-inner">
+      <p class="brand-mark">Порядок</p>
+      <h1>Разбросано — собери</h1>
+      <p class="start-text">Три коротких сцены. Без таймера и очков.</p>
+      <button type="button" class="btn" id="startBtn">Начать</button>
+    </div>
+  </div>
+
+  <script src="game.js" defer></script>
+</body>
+</html>

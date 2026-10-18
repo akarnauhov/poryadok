@@ -1,0 +1,245 @@
+:root {
+  --ink: #1c2421;
+  --ink-soft: #5a6a62;
+  --paper: #f3f6f4;
+  --moss: #5f7a6a;
+  --moss-deep: #3e5649;
+  --shadow: 0 16px 40px rgba(28, 36, 33, 0.12);
+  --font-display: "Literata", Georgia, serif;
+  --font-body: "Manrope", system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  color: var(--ink);
+  font-family: var(--font-body);
+  background: #b7c4bd;
+}
+
+body {
+  min-height: 100dvh;
+  overflow-x: hidden;
+}
+
+.atmosphere {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(800px 480px at 20% 10%, rgba(255, 255, 255, 0.4), transparent 55%),
+    linear-gradient(165deg, #d2dbd5, #b7c4bd 55%, #9fafa5);
+}
+
+.app {
+  position: relative;
+  z-index: 1;
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 24px 18px 32px;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.top {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.brand-mark {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 5vw, 2.5rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.brand-sub,
+.card-kicker {
+  margin: 6px 0 0;
+  color: var(--ink-soft);
+  font-size: 0.88rem;
+}
+
+.progress {
+  min-width: 120px;
+  text-align: right;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+}
+
+.bar {
+  margin-top: 8px;
+  height: 3px;
+  border-radius: 999px;
+  background: rgba(28, 36, 33, 0.12);
+  overflow: hidden;
+}
+
+.bar i {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: var(--moss);
+  transition: width 0.4s ease;
+}
+
+.stage {
+  flex: 1;
+  display: grid;
+  place-items: center;
+}
+
+.surface {
+  position: relative;
+  width: min(100%, 820px);
+  aspect-ratio: 16 / 10;
+  border-radius: 24px;
+  background: var(--surface, #e8eee9);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  touch-action: none;
+}
+
+.home {
+  position: absolute;
+  border: 1.5px dashed rgba(28, 36, 33, 0.2);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.22);
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.home.hot {
+  border-color: rgba(95, 122, 106, 0.7);
+  background: rgba(95, 122, 106, 0.14);
+}
+
+.home.filled {
+  border-color: transparent;
+  background: transparent;
+}
+
+.item {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  border: none;
+  padding: 0;
+  border-radius: 14px;
+  color: inherit;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  box-shadow: 0 8px 20px rgba(28, 36, 33, 0.1);
+  z-index: 2;
+  font-size: clamp(1.5rem, 3.4vw, 2rem);
+  line-height: 1;
+  touch-action: none;
+}
+
+.item.dragging {
+  cursor: grabbing;
+  z-index: 5;
+  box-shadow: 0 14px 32px rgba(28, 36, 33, 0.18);
+  transform: scale(1.04);
+}
+
+.item.placed {
+  cursor: default;
+  box-shadow: 0 4px 12px rgba(28, 36, 33, 0.08);
+}
+
+.hint {
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+  min-height: 1.35em;
+}
+
+.overlay,
+.start {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(28, 36, 33, 0.25);
+  backdrop-filter: blur(6px);
+}
+
+.start[hidden],
+.overlay[hidden] {
+  display: none !important;
+}
+
+.start-inner,
+.card {
+  width: min(100%, 400px);
+  padding: 32px 28px;
+  border-radius: 22px;
+  background: rgba(243, 246, 244, 0.95);
+  box-shadow: var(--shadow);
+}
+
+.start h1,
+.card h2 {
+  margin: 12px 0 8px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  font-size: clamp(1.5rem, 4vw, 1.9rem);
+}
+
+.start-text,
+.card-text {
+  margin: 0 0 22px;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+
+.btn {
+  appearance: none;
+  border: 0;
+  border-radius: 999px;
+  padding: 12px 20px;
+  background: var(--ink);
+  color: var(--paper);
+  font: 600 0.92rem var(--font-body);
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: var(--moss-deep);
+}
+
+@media (max-width: 700px) {
+  .top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .progress {
+    width: 100%;
+    text-align: left;
+  }
+
+  .surface {
+    aspect-ratio: 4 / 5;
+  }
+
+  .item {
+    font-size: 1.7rem;
+  }
+}
